@@ -2,13 +2,15 @@ package app;
 
 import model.Hero;
 import model.HTWRoom;
-
+/**
+ * @author Puloder
+ */
 public class EscapeGame {
     private final Hero hero;
     private final HTWRoom[] rooms = new HTWRoom[3];
     private boolean gameRunning = true;
     private boolean gameFinished = false;
-
+    
     public EscapeGame() {
         this.hero = new Hero();
     }
