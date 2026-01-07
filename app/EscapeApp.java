@@ -6,7 +6,9 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
-
+/**
+ * @author Puloder
+ */
 public class EscapeApp {
 
     public static final String SAVE_FILE_NAME = "save";
@@ -26,7 +28,10 @@ public class EscapeApp {
             System.out.println("====================");
         }
     }
-
+    /**
+     * @author Puloder
+     * Zeigt das Startmenü
+     */
     private void showMainMenu() {
         System.out.println("You're in the main menu");
         System.out.println("What do you want to do next?");
@@ -35,14 +40,23 @@ public class EscapeApp {
         System.out.println("");
         System.out.println("Please choose a number between 1 and 6: ");
     }
-
+    /**
+     * @author Puloder
+     * @param userInput
+     * Liest einen Input des Users und gibt ihn zurück 
+     * @return userIntut 
+     */
     private String readUserInput() {
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
         // TBD
         return userInput;
     }
-
+    /**
+     * @author Puloder
+     * @param input
+     * wertet den userInput aus.
+     */
     private void handleUserInput(String input) {
         switch (input) {
             case "1":
@@ -58,23 +72,35 @@ public class EscapeApp {
                 break;
         }
     }
-
+    /**
+     * @author Puloder
+     * Startet ein neues Game.
+     */
     private void startGame() {
         this.game = new EscapeGame();
         resumeGame();
     }
-
+    /**
+     * @author Puloder
+     * Setzt ein Game fort.
+     */
     private void resumeGame() {
         this.game.setGameRunning(true);
         this.game.run();
     }
-
+    /**
+     * @author Puloder
+     * Löscht die ein Game, sofern es existiert.
+     */
     private void deleteGame() {
         if (new File(SAVE_FILE_NAME).delete()) {
             System.out.println("Game deleted!");
         }
     }
-
+    /**
+     * @author Puloder
+     * Speichert einen Fortschritt des Games in einer Datei.
+     */
     private void saveGame() {
         try (FileOutputStream fos = new FileOutputStream(SAVE_FILE_NAME);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
@@ -86,7 +112,10 @@ public class EscapeApp {
         }
         System.out.println("Game saved!");
     }
-
+    /**
+     * @author Puloder
+     * Lädt ein gespeichertes Game
+     */
     private void loadGame() {
         try (FileInputStream fis = new FileInputStream(SAVE_FILE_NAME);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
@@ -96,15 +125,27 @@ public class EscapeApp {
             System.err.println("Something went wrong while loading the game: " + ex.getMessage());
         }
     }
-
+    /**
+     * @author Puloder
+     * Prüft, ob ein Game läuft.
+     * @return game als Aussage über des Status des Games.
+     */
     private boolean isGameRunning() {
         return game != null;
     }
-
+    /**
+     * @author Puloder
+     * Prüft, ob ein Game abgeschlossen ist. 
+     * @return game als Aussage über den Status des Games
+     */
     private boolean isGameFinished() {
         return game != null && game.isGameFinished();
     }
-
+    /**
+     * @author Puloder
+     * Prüft, ob ein Game gespeichert wurde
+     * @return True oder False als Aussage über den Status der Speicherung.
+     */
     private boolean hasSavedGame() {
         return new File(SAVE_FILE_NAME).exists();
     }
