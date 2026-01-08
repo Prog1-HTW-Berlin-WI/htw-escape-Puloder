@@ -35,9 +35,13 @@ public class EscapeApp {
     private void showMainMenu() {
         System.out.println("You're in the main menu");
         System.out.println("What do you want to do next?");
-        System.out.println("(1) Start new game");
-        System.out.println("(6) Quit");
-        System.out.println("");
+        System.out.println("(1) Spiel Starten");
+        System.out.println("(2) Spiel fortsetzen (nur anzeigen, wenn ein Spiel gestartet worden ist)");
+        System.out.println("(3) Spiel laden (nur anzeigen, wenn ein gespeichertes Spiel vorhanden ist)");
+        System.out.println("(4) Spiel speichern (nur anzeigen, wenn ein Spiel gestartet worden ist)");
+        System.out.println("(5) Spiel löschen (nur anzeigen, wenn ein gespeichertes Spiel vorhanden ist)");
+        System.out.println("(6) Programm beenden");
+        System.out.println("(7) Regelwerk (Optional)");
         System.out.println("Please choose a number between 1 and 6: ");
     }
     /**
